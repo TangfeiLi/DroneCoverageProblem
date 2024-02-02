@@ -91,15 +91,6 @@ namespace drone_cover {
 
         bool has_fractional_solution() const;
 
-        // bool has_solution_with_cycles() const;
-
-    // private:
-        /*  Test: I want to check if there are columns with the same
-            constraint coefficients and possibly different objective
-            function coefficients */
-        // std::vector<int> column_coefficients(const Column &col);
-
-        // void remove_duplicate_columns();
     };
 
     class BBNodeCompare {

@@ -51,25 +51,6 @@ namespace drone_cover {
         all_times_spent_on_sp = std::vector<double>(0);
     }
 
-    // void BBNode::remove_duplicate_columns() {
-    //     ColumnPool new_pool;
-
-    //     for(const auto &c : *pool) {
-    //         auto nc = std::find_if(new_pool.begin(), new_pool.end(),
-    //                                [&](const Column &c_in_new_pool) {
-    //                                    return column_coefficients(c) == column_coefficients(c_in_new_pool);
-    //                                });
-
-    //         if(nc == new_pool.end()) { new_pool.push_back(c); }
-    //         else if(nc->obj_coeff > c.obj_coeff) { *nc = c; }
-    //     }
-
-    //     std::cerr << "\tRemoved " << pool->size() - new_pool.size() << " duplicate columns"
-    //               << " out of " << pool->size() << std::endl;
-
-    //     *pool = new_pool;
-    // }
-
     void BBNode::solve(unsigned int node_number) {
         using namespace std::chrono;
 
@@ -232,25 +213,9 @@ namespace drone_cover {
         }
     }
 
-    // bool BBNode::is_feasible() const {
-    //     // An LP solution is feasible if the dummy column is not in the base columns
-    //     return std::none_of(base_columns.begin(), base_columns.end(),
-    //                         [](const auto &cc) { return cc.first.dummy; });
-    // }
-
-    // bool BBNode::is_integer_feasible() const {
-    //     // A MIP solution is feasible if the dummy column is not in the base columns
-    //     return std::none_of(mip_base_columns.begin(), mip_base_columns.end(),
-    //                         [](const auto &cc) { return cc.first.dummy; });
-    // }
 
     bool BBNode::has_fractional_solution() const {
         return std::any_of(base_columns.begin(), base_columns.end(),
                            [](const auto& cc) { return cc.second > cplex_epsilon && cc.second < 1.0 - cplex_epsilon; });
     }
-
-    // bool BBNode::has_solution_with_cycles() const {
-    //     return std::any_of(base_columns.begin(), base_columns.end(),
-    //                        [](const auto& cc) { return cc.first.has_cycles(); });
-    // }
 }

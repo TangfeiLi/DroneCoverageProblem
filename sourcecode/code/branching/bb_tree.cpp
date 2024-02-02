@@ -45,13 +45,6 @@ namespace drone_cover {
             return;
         }
 
-        // Ran out of nodes => Tree explored completely => Solution found! => LB = UB
-        // if(unexplored_nodes.empty()) {
-        //     lb = ub;
-        //     return;
-        // }
-
-        // lb = *unexplored_nodes.top()->father_lb;
     }
 
     void BBTree::explore_tree() {
